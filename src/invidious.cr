@@ -75,14 +75,15 @@ REQUEST_HEADERS_WHITELIST  = {"accept", "accept-encoding", "cache-control", "con
 RESPONSE_HEADERS_BLACKLIST = {"access-control-allow-origin", "alt-svc", "server"}
 HTTP_CHUNK_SIZE            = 10485760 # ~10MB
 
-CURRENT_BRANCH  = {{ "#{`git branch | sed -n '/* /s///p'`.strip}" }}
-CURRENT_COMMIT  = {{ "#{`git rev-list HEAD --max-count=1 --abbrev-commit`.strip}" }}
-CURRENT_VERSION = {{ "#{`git log -1 --format=%ci | awk '{print $1}' | sed s/-/./g`.strip}" }}
+CURRENT_BRANCH = "railway"
+CURRENT_COMMIT = "unknown"
+CURRENT_VERSION = "v1.0.0"
+
 
 # This is used to determine the `?v=` on the end of file URLs (for cache busting). We
 # only need to expire modified assets, so we can use this to find the last commit that changes
 # any assets
-ASSET_COMMIT = {{ "#{`git rev-list HEAD --max-count=1 --abbrev-commit -- assets`.strip}" }}
+ASSET_COMMIT = "no-git"
 
 SOFTWARE = {
   "name"    => "invidious",
